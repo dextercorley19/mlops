@@ -1,0 +1,13 @@
+# reddit-service-minikube.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: reddit-app-service
+spec:
+  selector:
+    app: reddit-app # Matches the labels in the Deployment template
+  ports:
+    - protocol: TCP
+      port: 80       # Port the service is available on within the cluster
+      targetPort: 8000 # Port the container is listening on
+  type: NodePort     # Exposes the service outside the cluster via Minikube IP and a node port
